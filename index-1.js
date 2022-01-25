@@ -1,5 +1,3 @@
-"use strict";
-
 // Модальное окно
 
 const message = "JavaScript is awesome!";
