@@ -136,3 +136,70 @@ for (const book of books) {
 
 const averageRating = (totalRating / books.length).toFixed(1);
 console.log(averageRating); // 8.2
+
+//Вычесляемые свойства
+
+const emailInputName = "email";
+const passwordInputName = "password";
+
+const credentials = {
+  [emailInputName]: "henry.carter@aptmail.com",
+  [passwordInputName]: "jqueryismyjam",
+};
+
+//Перебор обьекта по ключам и свойствам (for...in)
+
+const apartment = {
+  descr: "Spacious apartment in the city center",
+  rating: 4,
+  price: 2153,
+};
+const keys = [];
+const values = [];
+
+for (const key in apartment) {
+  keys.push(key);
+  values.push(apartment[key]);
+}
+
+//Проверка на собственные свойства hasOwnProperty()
+
+const book = {
+  title: "The Last Kingdom",
+  author: "Bernard Cornwell",
+  genres: ["historical prose", "adventure"],
+  rating: 8.38,
+};
+
+for (const key in book) {
+  if (book.hasOwnProperty(key)) {
+    console.log(key);
+    console.log(book[key]);
+  }
+}
+
+// Сумма всех ключей в обьекте object
+
+function countProps(object) {
+  let propCount = 0;
+
+  const keys = Object.keys(object);
+  propCount += keys.length;
+
+  return propCount;
+}
+countProps({ mail: "poly@mail.com", isOnline: true, score: 500 }); // 3
+
+//Доступ ко всем ключам и свойствам обьекта с помощью Object.key() and (for..of)
+
+const apartment = {
+  descr: "Spacious apartment in the city center",
+  rating: 4,
+  price: 2153,
+};
+const values = [];
+
+const keys = Object.keys(apartment);
+for (const key of keys) {
+  values.push(apartment[key]);
+}
