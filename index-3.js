@@ -293,3 +293,257 @@ function calculateTotalPrice(productName) {
   return 0;
 }
 calculateTotalPrice("Radar");
+
+// ДЕСТРУКТУРИЗАЦИЯ
+
+const book = {
+  title: "The Last Kingdom",
+  author: "Bernard Cornwell",
+  genres: ["historical prose", "adventure"],
+  isPublic: true,
+  rating: 8.38,
+};
+
+// Деструктуризируем
+const { title, author, isPublic, rating, coverImage } = book;
+console.log(coverImage); // undefined
+
+const accessType = isPublic ? "публичном" : "закрытом";
+const message = `Книга ${title} автора ${author} с рейтингом ${rating} находится в ${accessType} доступе.`;
+
+// Значения по умолчанию
+
+const book = {
+  title: "The Last Kingdom",
+  author: "Bernard Cornwell",
+};
+
+// Добавим картинку обложки если её нет в объекте книги
+const {
+  title,
+  coverImage = "https://via.placeholder.com/640/480",
+  author,
+} = book;
+
+console.log(title); // The Last Kingdom
+console.log(author); // Bernard Cornwell
+console.log(coverImage); // https://via.placeholder.com/640/480
+
+// Изминение имя переменной
+
+const firstBook = {
+  title: "The Last Kingdom",
+  coverImage:
+    "https://images-na.ssl-images-amazon.com/images/I/51b5YG6Y1rL.jpg",
+};
+
+const {
+  title: firstTitle,
+  coverImage: firstCoverImage = "https://via.placeholder.com/640/480",
+} = firstBook;
+
+console.log(firstTitle); // The Last Kingdom
+console.log(firstCoverImage); // https://images-na.ssl-images-amazon.com/images/I/51b5YG6Y1rL.jpg
+
+const secondBook = {
+  title: "Сон смешного человека",
+};
+
+const {
+  title: secondTitle,
+  coverImage: secondCoverImage = "https://via.placeholder.com/640/480",
+} = secondBook;
+
+console.log(secondTitle); // Сон смешного человека
+console.log(secondCoverImage); // https://via.placeholder.com/640/480
+
+// Деструктуризация в цикле for...of
+
+for (const book of books) {
+  const { title, author, rating } = book;
+
+  console.log(title);
+  console.log(author);
+  console.log(rating);
+}
+
+// Глубокая деструктуризация
+
+const user = {
+  name: "Jacques Gluke",
+  tag: "jgluke",
+  stats: {
+    followers: 5603,
+    views: 4827,
+    likes: 1308,
+  },
+};
+
+const {
+  name,
+  tag,
+  stats: { followers, views: userViews, likes: userLikes = 0 },
+} = user;
+
+console.log(name); // Jacques Gluke
+console.log(tag); // jgluke
+console.log(followers); // 5603
+console.log(userViews); // 4827
+console.log(userLikes); // 1308
+
+// Деструктуризация массивов
+
+const rgb = [200, 255, 100];
+const [red, green, blue] = rgb;
+
+console.log(`R:${red},G:${green},B:${blue}`); // "R:200,G:255,B:100"
+
+// Иногда из массива необходимо деструктуризировать только первые N элементов, а остальные сохранить в одну переменную в виде массива. При деструкции массива можно распаковать и присвоить оставшуюся часть элементов массива переменной, используя операцию ... (rest).
+
+const rgb = [200, 255, 100];
+
+const [red, ...colors] = rgb;
+
+console.log(red); // "200"
+console.log(colors); // [255, 100]
+
+// Элементы можно пропускать. Допустим, из массива rgb необходимо взять только последнее значение. На практике эта возможность используется редко.
+
+const rgb = [200, 100, 255];
+
+const [, , blue] = rgb;
+
+console.log(`Blue: ${blue}`); // "Blue: 255"
+
+// Паттерн "Обьект параметров"
+
+function doStuffWithBook(book) {
+  const { title, numberOfPages, downloads, rating, isPublic } = book;
+  console.log(title);
+  console.log(numberOfPages);
+  // И так далее
+}
+
+// Или сразу в сигнатуре (подписи) функции, разницы нет.
+
+function doStuffWithBook({
+  title,
+  numberOfPages,
+  downloads,
+  rating,
+  isPublic,
+}) {
+  console.log(title);
+  console.log(numberOfPages);
+  // И так далее
+}
+
+// Средняя температура за два дня
+
+function calculateMeanTemperature(forecast) {
+  // const todayLow = forecast.today.low;
+  // const todayHigh = forecast.today.high;
+  // const tomorrowLow = forecast.tomorrow.low;
+  // const tomorrowHigh = forecast.tomorrow.high;
+
+  const {
+    today: { low: todayLow, high: todayHigh },
+    tomorrow: { low: tomorrowLow, high: tomorrowHigh },
+  } = forecast;
+
+  return (todayLow + todayHigh + tomorrowLow + tomorrowHigh) / 4;
+}
+calculateMeanTemperature({
+  today: { low: 28, high: 32 },
+  tomorrow: { low: 25, high: 29 },
+}); // 28.5
+
+// Возвращает сумму аргументов любого количества
+
+function add(...args) {
+  let sum = 0;
+  for (var i = 0; i < args.length; i += 1) {
+    sum += args[i];
+  }
+  return sum;
+}
+add(12, 4, 11, 48);
+
+// Считает сумму тех чисел которые больше первого
+
+function addOverNum(...args) {
+  let total = 0;
+
+  for (let i = 0; i < args.length; i += 1) {
+    if (args[0] < args[i]) total += args[i];
+  }
+  return total;
+}
+addOverNum(10, 12, 4, 11, 48, 10, 8);
+
+// Возвращает общие числа с args и array
+
+function findMatches(array, ...args) {
+  const matches = [];
+  for (let i = 0; i < args.length; i += 1) {
+    if (array.includes(args[i])) {
+      matches.push(args[i]);
+    }
+  }
+  return matches;
+}
+findMatches([1, 2, 3, 4, 5], 1, 8, 2, 7);
+
+// Заменяет название книги в обьекте
+
+const bookShelf = {
+  books: ["The last kingdom", "Haze", "The guardian of dreams"],
+  updateBook(oldName, newName) {
+    const bookIndex = this.books.indexOf(oldName);
+    this.books.splice(bookIndex, 1, newName);
+    return `Updating books ${oldName} to ${newName}`;
+  },
+};
+
+// getPotions() - метод для получения всех зелий. Возвращает значение свойства potions.
+// addPotion(newPotion) - добавляет зелье newPotion (уже объект) в массив в свойстве potions, но только если такого зелья еще нет в инвентаре. В противном случае возвращается строка.
+// removePotion(potionName) - удаляет объект зелья с именем potionName из массива в свойстве potions.
+// updatePotionName(oldName, newName) - обновляет свойство name объекта-зелья с названием oldName на newName в массиве potions
+
+const atTheOldToad = {
+  potions: [
+    { name: "Speed potion", price: 460 },
+    { name: "Dragon breath", price: 780 },
+    { name: "Stone skin", price: 520 },
+  ],
+
+  getPotions() {
+    return this.potions;
+  },
+  addPotion(newPotion) {
+    for (const potion of this.potions) {
+      if (potion.name === newPotion.name) {
+        return `Error! Potion ${newPotion.name} is already in your inventory!`;
+      }
+    }
+    this.potions.push(newPotion);
+  },
+  removePotion(potionName) {
+    for (let i = 0; i < this.potions.length; i += 1) {
+      if (this.potions[i].name === potionName) {
+        this.potions.splice(i, 1);
+        return;
+      }
+    }
+    return `Potion ${potionName} is not in inventory!`;
+  },
+  updatePotionName(oldName, newName) {
+    for (let i = 0; i < this.potions.length; i += 1) {
+      if (this.potions[i].name === oldName) {
+        this.potions[i].name = newName;
+        return;
+      }
+    }
+    return `Potion ${oldName} is not in inventory!`;
+  },
+};
