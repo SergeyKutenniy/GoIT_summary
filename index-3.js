@@ -1,6 +1,6 @@
 //ОБЬЕКТЫ, ДЕСТРУКТУРИЗАЦИЯ
 
-// Методы обьектов
+// _________________________________________________________________________________// Методы обьектов
 
 const bookShelf = {
   books: ["The Last Kingdom"],
@@ -23,7 +23,7 @@ console.log(bookShelf.getBooks()); // ['The Last Kingdom', 'The Mist', 'Dream Gu
 bookShelf.removeBook("The Mist");
 console.log(bookShelf.getBooks()); // ['The Last Kingdom', 'Dream Guardian']
 
-// Доступ к ключам и свойствам обьекта
+// _________________________________________________________________________________// Доступ к ключам и свойствам обьекта
 
 const book = {
   title: "The Last Kingdom",
@@ -69,7 +69,7 @@ for (const key in book) {
   // Если это не собственное свойство - ничего не делаем
 }
 
-// Доступ ко всем ключам/свойствам обьекта
+// _________________________________________________________________________________// Доступ ко всем ключам/свойствам обьекта
 
 const book = {
   title: "The Last Kingdom",
@@ -82,7 +82,7 @@ console.log(keys); // ['title', 'author', 'rating']
 const values = Object.values(book);
 console.log(values); // ['The Last Kingdom', 'Bernard Cornwell', 8.38]
 
-// Метод Object.entries()
+// _________________________________________________________________________________// Метод Object.entries()
 
 const book = {
   title: "The Last Kingdom",
@@ -98,7 +98,7 @@ console.log(values); // ['The Last Kingdom', 'Bernard Cornwell', 8.38]
 const entries = Object.entries(book);
 // [["title", "The Last Kingdom"], ["author", "Bernard Cornwell"], ["rating", 8.38]]
 
-// Доступ ко всем названиям книг
+// _________________________________________________________________________________// Доступ ко всем названиям книг
 
 const books = [
   {
@@ -126,7 +126,7 @@ for (const book of books) {
 
 console.log(bookNames); // ["The Last Kingdom", "На берегу спокойных вод", "Сон смешного человека"]
 
-// Средний рейтинг наших книг
+// _________________________________________________________________________________// Средний рейтинг наших книг
 
 let totalRating = 0;
 
@@ -137,7 +137,7 @@ for (const book of books) {
 const averageRating = (totalRating / books.length).toFixed(1);
 console.log(averageRating); // 8.2
 
-//Вычесляемые свойства
+// _________________________________________________________________________________//Вычесляемые свойства
 
 const emailInputName = "email";
 const passwordInputName = "password";
@@ -147,7 +147,7 @@ const credentials = {
   [passwordInputName]: "jqueryismyjam",
 };
 
-//Перебор обьекта по ключам и свойствам (for...in)
+// _________________________________________________________________________________//Перебор обьекта по ключам и свойствам (for...in)
 
 const apartment = {
   descr: "Spacious apartment in the city center",
@@ -162,7 +162,7 @@ for (const key in apartment) {
   values.push(apartment[key]);
 }
 
-//Проверка на собственные свойства hasOwnProperty()
+// ________________________________________________________________________________//Проверка на собственные свойства hasOwnProperty()
 
 const book = {
   title: "The Last Kingdom",
@@ -178,7 +178,7 @@ for (const key in book) {
   }
 }
 
-// Сумма всех ключей в обьекте object
+// _________________________________________________________________________________// Сумма всех ключей в обьекте object
 
 function countProps(object) {
   let propCount = 0;
@@ -190,7 +190,7 @@ function countProps(object) {
 }
 countProps({ mail: "poly@mail.com", isOnline: true, score: 500 }); // 3
 
-//Доступ ко всем ключам и свойствам обьекта с помощью Object.key() and (for..of)
+// _________________________________________________________________________________//Доступ ко всем ключам и свойствам обьекта с помощью Object.key() and (for..of)
 
 const apartment = {
   descr: "Spacious apartment in the city center",
@@ -204,7 +204,7 @@ for (const key of keys) {
   values.push(apartment[key]);
 }
 
-//Сумма зарплат работников
+// _________________________________________________________________________________//Сумма зарплат работников
 
 function countTotalSalary(salaries) {
   let totalSalary = 0;
@@ -218,7 +218,7 @@ function countTotalSalary(salaries) {
 }
 countTotalSalary({ mango: 100, poly: 150, alfred: 80 });
 
-//Доступ ко всем ключам и свойствам обьектов
+// _________________________________________________________________________________//Доступ ко всем ключам и свойствам обьектов
 
 const colors = [
   { hex: "#f44336", rgb: "244,67,54" },
@@ -235,7 +235,7 @@ for (const color of colors) {
   rgbColors.push(color.rgb);
 }
 
-// Функция ищет название товара и возвращает его цену
+// _________________________________________________________________________________// Функция ищет название товара и возвращает его цену
 
 const products = [
   { name: "Radar", price: 1300, quantity: 4 },
@@ -254,7 +254,7 @@ function getProductPrice(productName) {
 }
 getProductPrice("Radar");
 
-// Возвращает все значения ключа propName
+// _________________________________________________________________________________// Возвращает все значения ключа propName
 
 const products = [
   { name: "Radar", price: 1300, quantity: 4 },
@@ -275,7 +275,7 @@ function getAllPropValues(propName) {
 
 getAllPropValues("price"); // [1300, 2700, 400, 1200]
 
-// Возвращает общую цену за нужный товар
+// _________________________________________________________________________________// Возвращает общую цену за нужный товар
 
 const products = [
   { name: "Radar", price: 1300, quantity: 4 },
@@ -294,7 +294,7 @@ function calculateTotalPrice(productName) {
 }
 calculateTotalPrice("Radar");
 
-// ДЕСТРУКТУРИЗАЦИЯ
+// _________________________________________________________________________________// ДЕСТРУКТУРИЗАЦИЯ
 
 const book = {
   title: "The Last Kingdom",
@@ -329,7 +329,7 @@ console.log(title); // The Last Kingdom
 console.log(author); // Bernard Cornwell
 console.log(coverImage); // https://via.placeholder.com/640/480
 
-// Изминение имя переменной
+// _________________________________________________________________________________// Изминение имя переменной
 
 const firstBook = {
   title: "The Last Kingdom",
@@ -357,7 +357,7 @@ const {
 console.log(secondTitle); // Сон смешного человека
 console.log(secondCoverImage); // https://via.placeholder.com/640/480
 
-// Деструктуризация в цикле for...of
+// _________________________________________________________________________________// Деструктуризация в цикле for...of
 
 for (const book of books) {
   const { title, author, rating } = book;
@@ -367,7 +367,7 @@ for (const book of books) {
   console.log(rating);
 }
 
-// Глубокая деструктуризация
+// _________________________________________________________________________________// Глубокая деструктуризация
 
 const user = {
   name: "Jacques Gluke",
@@ -391,7 +391,7 @@ console.log(followers); // 5603
 console.log(userViews); // 4827
 console.log(userLikes); // 1308
 
-// Деструктуризация массивов
+// _________________________________________________________________________________// Деструктуризация массивов
 
 const rgb = [200, 255, 100];
 const [red, green, blue] = rgb;
@@ -415,7 +415,7 @@ const [, , blue] = rgb;
 
 console.log(`Blue: ${blue}`); // "Blue: 255"
 
-// Паттерн "Обьект параметров"
+// _________________________________________________________________________________// Паттерн "Обьект параметров"
 
 function doStuffWithBook(book) {
   const { title, numberOfPages, downloads, rating, isPublic } = book;
@@ -438,7 +438,7 @@ function doStuffWithBook({
   // И так далее
 }
 
-// Средняя температура за два дня
+// _________________________________________________________________________________// Средняя температура за два дня
 
 function calculateMeanTemperature(forecast) {
   // const todayLow = forecast.today.low;
@@ -458,7 +458,7 @@ calculateMeanTemperature({
   tomorrow: { low: 25, high: 29 },
 }); // 28.5
 
-// Возвращает сумму аргументов любого количества
+// _________________________________________________________________________________// Возвращает сумму аргументов любого количества
 
 function add(...args) {
   let sum = 0;
@@ -469,7 +469,7 @@ function add(...args) {
 }
 add(12, 4, 11, 48);
 
-// Считает сумму тех чисел которые больше первого
+// _________________________________________________________________________________// Считает сумму тех чисел которые больше первого
 
 function addOverNum(...args) {
   let total = 0;
@@ -481,7 +481,7 @@ function addOverNum(...args) {
 }
 addOverNum(10, 12, 4, 11, 48, 10, 8);
 
-// Возвращает общие числа с args и array
+// _________________________________________________________________________________// Возвращает общие числа с args и array
 
 function findMatches(array, ...args) {
   const matches = [];
@@ -494,7 +494,7 @@ function findMatches(array, ...args) {
 }
 findMatches([1, 2, 3, 4, 5], 1, 8, 2, 7);
 
-// Заменяет название книги в обьекте
+// _________________________________________________________________________________// Заменяет название книги в обьекте
 
 const bookShelf = {
   books: ["The last kingdom", "Haze", "The guardian of dreams"],
